@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+  httpd-frontend:
+    build: ./contexts/httpd-frontend
+    restart: always
+    ports:
+      - "80:80"
+
+  grafana:
+    image: grafana/grafana:8.0.1
+    restart: always
+    environment:
+      GF_SERVER_ROOT_URL: "http://localhost/grafana"
+      GF_SERVER_SERVE_FROM_SUB_PATH: "true"
